@@ -19,7 +19,7 @@ if(process.env.PASTE_ENV === 'dev') {
   });
 }
 
-const apiRouter = require('./srv/router');
+const apiRouter = require('./router');
 app.use(apiRouter);
 
 app.use((error,req,res,next)=>{

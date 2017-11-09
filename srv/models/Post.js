@@ -5,6 +5,10 @@ mongoose.Promise = Promise;
 
 const postSchema = mongoose.Schema({
   _id: String,
+  _user: {
+    type: String,
+    ref: 'User'
+  },
   content: {
     type: String,
     required: true,
