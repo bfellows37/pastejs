@@ -1,3 +1,5 @@
-<p>
-  board works!
-</p>
+<ul>
+  <li *ngFor="let thread of threads">
+    <app-thread [rootPost]="thread"></app-thread>
+  </li>
+</ul>

@@ -49,7 +49,7 @@ const addPost = async (req,res,next) => {
   next();
 
   /*
-  Update the root post in the thread with the current time so that it will bump to top
+  Update the root post in the board with the current time so that it will bump to top
   Called after next because I don't want to delay the response for this to happen
   */
   if(req.body.replyTo) {

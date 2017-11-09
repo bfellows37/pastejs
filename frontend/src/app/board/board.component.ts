@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Thread } from '../thread';
+import { ThreadService } from '../thread.service';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  threads: Thread[];
+
+  constructor(private threadService: ThreadService) { }
 
   ngOnInit() {
+    this.getThreads();
+  }
+
+  getThreads(): void {
+    this.threadService.getThreads()
+      .subscribe(threads => this.threads = threads);
   }
 
 }

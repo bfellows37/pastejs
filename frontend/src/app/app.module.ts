@@ -5,16 +5,16 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { ThreadComponent } from './thread/thread.component';
 import { BoardComponent } from './board/board.component';
 
 import { ThreadService } from './thread.service';
+import { ThreadComponent } from './thread/thread.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ThreadComponent,
     BoardComponent,
+    ThreadComponent,
   ],
   imports: [
     AppRoutingModule,
