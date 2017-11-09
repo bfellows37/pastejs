@@ -1,1 +1,6 @@
-{{rootPost.content}}
+<div class="container thread-container">
+  <div class="row thread-row">
+    <app-post [reply]="rootPost"></app-post>
+    <app-post *ngFor="let reply of replies" [reply]="reply"></app-post>
+  </div>
+</div>

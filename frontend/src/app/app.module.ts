@@ -9,12 +9,14 @@ import { BoardComponent } from './board/board.component';
 
 import { ThreadService } from './thread.service';
 import { ThreadComponent } from './thread/thread.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     ThreadComponent,
+    PostComponent,
   ],
   imports: [
     AppRoutingModule,
