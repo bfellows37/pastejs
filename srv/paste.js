@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
+app.use(cors());
 
 const mongodbURL = process.env.PASTE_MONGO_URL || 'mongodb://localhost:27017/pastejs';
 mongoose.connect(mongodbURL,{useMongoClient:true});
