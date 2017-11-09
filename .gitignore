@@ -1,3 +1,4 @@
 .idea
 srv/node_modules
-frontend/paste/node_modules
+frontend/node_modules
+frontend/src/assets/bower_components
