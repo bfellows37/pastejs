@@ -19,12 +19,15 @@ if(process.env.PASTE_ENV === 'dev') {
   });
 }
 
-
 const apiRouter = require('./srv/router');
 app.use(apiRouter);
 
-const listenPort = process.env.PASTE_PORT || 3000;
+app.use((error,req,res,next)=>{
+  console.log(error);
+  res.status(500).send(error);
+});
 
+const listenPort = process.env.PASTE_PORT || 3000;
 app.listen(listenPort,()=>{
   console.log(`listening on ${listenPort}`)
 });

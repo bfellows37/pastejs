@@ -1,39 +1,66 @@
 'use strict';
 
 const Post = require('../../models/Post');
+const generateId = require('time-uuid');
+
+let iterator = 100;
 
 const addPost = async (req,res,next) => {
 
+  const postId = generateId();
+  let parentPost;
 
-  let constructedTree;
-  if(req.body.post.parent){
-    let parentPost;
+  if(!req.body.replyTo) {
     try {
-      parentPost = await Post.findOne({_id: req.body.post.parent});
+      req.post = await Post.create({
+        _id: postId,
+        replyTo: postId,
+        content: req.body.post.content,
+        parent: null,
+        isRoot: true,
+        path: postId
+      });
+    } catch(e) {
+      return next(new Error('Root post was not created.'));
+    }
 
-      constructedTree = {
-        ancestors: parentPost.tree.ancestors.push(parentPost._id),
-        parent: parentPost._id
-      }
-    } catch(error) {
-      return next(error);
-    }
   } else {
-    constructedTree = {
-      ancestors: []
+    try {
+      parentPost = await Post.findOne({_id: req.body.replyTo});
+    } catch(e) {
+      return next(new Error('Reply was not created'));
     }
+
+    try {
+      req.post = await Post.create({
+        _id: postId,
+        replyTo: parentPost.replyTo,
+        content: req.body.post.content,
+        parent: parentPost._id,
+        isRoot: false,
+        path: `${parentPost.path}.${postId}`
+      });
+    } catch(e) {
+      return next(new Error('Reply was not created.'));
+    }
+
   }
 
-  const post = {
-    content: req.body.post.content,
-    tree: constructedTree
-  };
+  next();
 
-  try {
-    req.post = await Post.create(post);
-    next();
-  } catch(error) {
-    return next(error);
+  /*
+  Update the root post in the thread with the current time so that it will bump to top
+  Called after next because I don't want to delay the response for this to happen
+  */
+  if(req.body.replyTo) {
+    let rootPost;
+    try {
+       rootPost = await Post.findById(parentPost.replyTo);
+       rootPost.updatedAt = new Date();
+       rootPost.save();
+    } catch(e) {
+      next(e);
+    }
   }
 };
 

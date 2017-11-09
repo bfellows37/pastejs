@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const getPosts = require('./getPosts');
-const getPost = require('./getPost');
+const getPost = require('./getReplies');
 const addPost = require('./addPost');
 
 router.get('/',
@@ -11,10 +11,10 @@ router.get('/',
     res.send(req.posts);
   });
 
-router.get('/:postId',
+router.get('/replies/:replyTo',
   getPost,
   (req,res) => {
-    res.send(req.post);
+    res.send(req.replies);
   });
 
 router.post('/',

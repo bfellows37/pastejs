@@ -12,7 +12,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^4.13.0",
-    "superagent": "^3.8.0"
+    "superagent": "^3.8.0",
+    "time-uuid": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

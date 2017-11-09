@@ -4,20 +4,29 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 const postSchema = mongoose.Schema({
-  content: String,
+  _id: String,
+  content: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  replyTo: {
+    type: String,
+    ref: 'Post'
+  },
+  parent: {
+    type: String,
+    ref: 'Post'
+  },
+  path: {
+    type: String
+  },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'User'
   },
-  tree: {
-    ancestors: {
-      type: [mongoose.Schema.Types.ObjectId],
-      ref: 'Post'
-    },
-    parent: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Post'
-    }
+  isRoot: {
+    type: Boolean
   }
 },{
   timestamps: true
