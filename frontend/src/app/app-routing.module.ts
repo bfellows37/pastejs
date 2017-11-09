@@ -4,8 +4,8 @@ import { ThreadComponent } from './thread/thread.component';
 import { BoardComponent } from './board/board.component';
 
 const routes: Routes = [
-  { path: 'thread', component: ThreadComponent },
-  { path: '', component: BoardComponent }
+  { path: '', component: BoardComponent },
+  { path: 'thread', component: ThreadComponent }
 ];
 
 @NgModule({
