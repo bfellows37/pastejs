@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Thread } from '../thread';
-import { ThreadService } from '../thread.service';
+import { Thread } from '../../types/thread';
+import { ThreadService } from '../../services/thread.service';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
@@ -15,7 +15,6 @@ export class ThreadComponent implements OnInit {
 
   constructor(
     private threadService: ThreadService,
-    private domSanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {

@@ -7,7 +7,8 @@ const getPosts = async (req,res,next) => {
   try {
     req.posts = await Post.find({isRoot: true})
       .collation({locale: 'en'})
-      .sort({updatedAt: 'desc'});
+      .sort({updatedAt: 'desc'})
+      .limit(100);
 
     next();
   } catch(error) {

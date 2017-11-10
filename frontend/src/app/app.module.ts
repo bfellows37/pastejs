@@ -1,17 +1,22 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+import { ClientStateService } from "./services/client-state.service";
+import { ThreadService } from './services/thread.service';
 
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { BoardComponent } from './board/board.component';
+import { BoardComponent } from './components/board/board.component';
 
-import { ThreadService } from './thread.service';
-import { ThreadComponent } from './thread/thread.component';
-import { PostComponent } from './post/post.component';
+import { ThreadComponent } from './components/thread/thread.component';
+import { PostComponent } from './components/post/post.component';
+
 
 @NgModule({
+  providers: [ClientStateService,ThreadService],
   declarations: [
     AppComponent,
     BoardComponent,
@@ -23,7 +28,6 @@ import { PostComponent } from './post/post.component';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [ThreadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

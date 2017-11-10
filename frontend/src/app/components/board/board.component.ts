@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Thread } from '../thread';
-import { ThreadService } from '../thread.service';
+import { Thread } from '../../types/thread';
+import { ThreadService } from '../../services/thread.service';
 
 @Component({
   selector: 'app-board',

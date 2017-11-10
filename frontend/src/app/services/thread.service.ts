@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
-import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/map';
 
-
-import { Thread } from './thread';
+import { Thread } from '../types/thread';
 
 @Injectable()
 export class ThreadService {

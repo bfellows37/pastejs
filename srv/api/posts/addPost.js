@@ -1,13 +1,13 @@
 'use strict';
 
 const Post = require('../../models/Post');
-const generateId = require('time-uuid');
+// const generateId = require('time-uuid');
 
 let iterator = 100;
 
 const addPost = async (req,res,next) => {
 
-  const postId = generateId();
+  const postId = Post.generateId();
   let parentPost;
 
   if(!req.body.replyTo) {
@@ -20,8 +20,9 @@ const addPost = async (req,res,next) => {
         isRoot: true,
         path: postId
       });
+      next();
     } catch(e) {
-      return next(new Error('Root post was not created.'));
+      next(new Error('Root post was not created.'));
     }
 
   } else {
@@ -40,17 +41,17 @@ const addPost = async (req,res,next) => {
         isRoot: false,
         path: `${parentPost.path}.${postId}`
       });
+      next();
     } catch(e) {
-      return next(new Error('Reply was not created.'));
+      next(new Error('Reply was not created.'));
     }
 
   }
 
-  next();
-
   /*
   Update the root post in the board with the current time so that it will bump to top
   Called after next because I don't want to delay the response for this to happen
+  and because Javascript will happily do this.
   */
   if(req.body.replyTo) {
     let rootPost;

@@ -1,0 +1,7 @@
+<div (click)="selectPost(reply._id)" class="clickable">
+  <div class="row" [style.margin-left]="dynamicIndent(reply.indent)" ngClass="{{(isSelected?'selected':'unselected')}}">
+      <div class="col-xs-12 content">
+        {{reply.content}} - naem {{reply._id}}
+      </div>
+  </div>
+</div>

@@ -3,4 +3,5 @@ export class Thread {
   content: string;
   path: string;
   createdAt: Date;
+  isRoot: Boolean;
 }
