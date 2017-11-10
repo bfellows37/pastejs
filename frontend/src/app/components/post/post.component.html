@@ -1,7 +1,27 @@
-<div (click)="selectPost(reply._id)" class="clickable">
-  <div class="row" [style.margin-left]="dynamicIndent(reply.indent)" ngClass="{{(isSelected?'selected':'unselected')}}">
-      <div class="col-xs-12 content">
-        {{reply.content}} - naem {{reply._id}}
+<div (click)="selectPost(reply._id)" class="clickable row">
+  <div *ngIf="isSelected || reply.isRoot" [style.margin-left]="dynamicIndent(reply.indent)" ngClass="{{(isSelected ?'selected':'unselected')}} {{reply.isRoot ? 'root' : ''}}" class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-6">
+        naem
       </div>
+      <div class="col-xs-6 text-right">
+        {{reply.createdAt | date: 'medium'}}
+      </div>
+      <div class="col-xs-12">
+        {{reply.content}}
+        <button *ngIf="isSelected" class="toggle-reply-form btn btn-primary" (click)="toggleIsReplying(true)">
+          <span *ngIf="!isReplying">re:</span>
+          <span *ngIf="isReplying">x</span>
+        </button>
+        <app-replyform [replyTo]="reply._id" *ngIf="isReplying"></app-replyform>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isSelected && !reply.isRoot" [style.margin-left]="dynamicIndent(reply.indent)" class="unselected col-xs-12">
+    <div class="user-float">
+      naem
+    </div>
+    {{reply.content}}
   </div>
 </div>

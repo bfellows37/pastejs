@@ -6,6 +6,7 @@ import { ClientStateService } from "./services/client-state.service";
 import { ThreadService } from './services/thread.service';
 
 import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -13,6 +14,7 @@ import { BoardComponent } from './components/board/board.component';
 
 import { ThreadComponent } from './components/thread/thread.component';
 import { PostComponent } from './components/post/post.component';
+import { ReplyformComponent } from './replyform/replyform.component';
 
 
 @NgModule({
@@ -22,11 +24,13 @@ import { PostComponent } from './components/post/post.component';
     BoardComponent,
     ThreadComponent,
     PostComponent,
+    ReplyformComponent,
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,6 @@
-<div class="row thread-container">
-  <div class="thread-row">
+<div class="row">
+  <div class="col-xs-12">
     <app-post [reply]="rootPost"></app-post>
     <app-post *ngFor="let reply of replies" [reply]="reply"></app-post>
   </div>
-</div>
-<div class="row">
-  <div class="thread-terminator"></div>
 </div>

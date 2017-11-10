@@ -12,7 +12,8 @@ import { UiState } from "../../types/ui-state";
 export class PostComponent implements OnInit {
 
   @Input() reply: Thread;
-  isSelected: boolean;
+  isSelected: Boolean;
+  isReplying: Boolean;
 
   constructor(
     private domSanitizer: DomSanitizer,
@@ -32,5 +33,9 @@ export class PostComponent implements OnInit {
 
   selectPost(): void {
     this.clientStateService.setSelectedPost(this.reply._id);
+  }
+
+  toggleIsReplying(): void {
+    this.isReplying = !this.isReplying;
   }
 }

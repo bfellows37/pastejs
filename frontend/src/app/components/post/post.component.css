@@ -1,10 +1,34 @@
 .selected {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5);
+  /*box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5);*/
   color:#000;
-  padding: 10px 0;
+  cursor: default;
+  border-color: #7f7f7f;
+  overflow:inherit;
 }
 
-.unselected .content {
+.unselected {
   max-height: 1.5em;
   overflow:hidden;
+  border-color:#fff;
+}
+
+.selected, .unselected {
+  border-style: solid;
+  border-width: 1px 0;
+}
+
+.root {
+  max-height: none;
+}
+
+.user-float {
+  float:right;
+}
+
+button.toggle-reply-form {
+  position: relative;
+  top: 2ex;
+  left: 2ex;
+  z-index:1000;
+  box-shadow: 0 0 5px 5px #fff;
 }
