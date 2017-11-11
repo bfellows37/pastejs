@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ThreadService } from "../services/thread.service";
 
 @Component({
   selector: 'app-replyform',
@@ -10,13 +11,20 @@ export class ReplyformComponent implements OnInit {
   @Input() replyTo: String;
   post: String;
 
-  constructor() { }
+  constructor(private threadService: ThreadService,) { }
 
   ngOnInit() {
+    this.post = this.replyTo;
   }
 
   submitReply(): void {
-    console.log(this.post);
+
+    this.threadService.postReply({
+      post: {
+        content: this.post
+      },
+      replyTo: this.replyTo
+    });
   }
 
 }

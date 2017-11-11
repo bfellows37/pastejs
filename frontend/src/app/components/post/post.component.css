@@ -28,7 +28,7 @@
 button.toggle-reply-form {
   position: relative;
   top: 2ex;
-  left: 2ex;
   z-index:1000;
   box-shadow: 0 0 5px 5px #fff;
+  background-color:darkgreen;
 }

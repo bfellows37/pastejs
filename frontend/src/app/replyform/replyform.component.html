@@ -3,9 +3,11 @@
     <form (submit)="submitReply();">
       <div class="form-group">
         <div><label for="{{replyTo}}-reply-content">Say something good</label></div>
-        <div><textarea name="post" [(ngModel)]="post" id="{{replyTo}}-reply-content"></textarea></div>
+        <div><textarea class="form-control" name="post" [(ngModel)]="post" id="{{replyTo}}-reply-content"></textarea></div>
       </div>
-      <button type="submit" class="btn btn-primary">PASTE</button>
+      <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary">PASTE</button>
+      </div>
     </form>
   </div>
 </div>

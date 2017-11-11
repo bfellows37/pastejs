@@ -24,11 +24,14 @@ export class PostComponent implements OnInit {
     this.clientStateService.uiState$
       .subscribe((uiState) =>{
         this.isSelected = (uiState.selectedPost === this.reply._id);
+        if(this.isReplying && !this.isSelected) {
+          this.isReplying = false;
+        }
       });
   }
 
   dynamicIndent(indent): SafeStyle {
-    return this.domSanitizer.bypassSecurityTrustStyle(`${indent}ex`);
+    return this.domSanitizer.bypassSecurityTrustStyle(`${15+indent*10}px`);
   };
 
   selectPost(): void {
