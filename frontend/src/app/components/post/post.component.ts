@@ -31,7 +31,7 @@ export class PostComponent implements OnInit {
   }
 
   dynamicIndent(indent): SafeStyle {
-    return this.domSanitizer.bypassSecurityTrustStyle(`${15+indent*10}px`);
+    return this.domSanitizer.bypassSecurityTrustStyle(`${indent*10}px`);
   };
 
   selectPost(): void {
