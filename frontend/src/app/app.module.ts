@@ -14,7 +14,8 @@ import { BoardComponent } from './components/board/board.component';
 
 import { ThreadComponent } from './components/thread/thread.component';
 import { PostComponent } from './components/post/post.component';
-import { ReplyformComponent } from './replyform/replyform.component';
+import { ReplyformComponent } from './components/replyform/replyform.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ReplyformComponent } from './replyform/replyform.component';
     ThreadComponent,
     PostComponent,
     ReplyformComponent,
+    LoginComponent,
   ],
   imports: [
     AppRoutingModule,

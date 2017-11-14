@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Thread } from '../../types/thread';
 import { ThreadService } from '../../services/thread.service';
+import { ClientStateService } from "../../services/client-state.service";
 
 @Component({
   selector: 'app-board',
@@ -11,15 +12,30 @@ export class BoardComponent implements OnInit {
 
   threads: Thread[];
 
-  constructor(private threadService: ThreadService) { }
+  constructor(
+    private _threadService: ThreadService,
+    private _clientStateService: ClientStateService
+  ) { }
 
   ngOnInit() {
-    this.getThreads();
+    this._getThreads();
+    this._followCreatedPost();
   }
 
-  getThreads(): void {
-    this.threadService.getThreads()
-      .subscribe(threads => this.threads = threads);
+  private _followCreatedPost(): void {
+    this._clientStateService.createdPost$
+      .subscribe((newPost: Thread) => {
+        if(newPost !== null && newPost.isRoot === true) {
+          this.threads.splice(0,0,newPost);
+        }
+      });
+  }
+
+  private _getThreads(): void {
+    this._threadService.getThreads()
+      .subscribe(threads => {
+        this.threads = threads;
+      });
   }
 
 }

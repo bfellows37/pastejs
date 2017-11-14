@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ThreadService } from "../services/thread.service";
+import { ThreadService } from "../../services/thread.service";
 
 @Component({
   selector: 'app-replyform',
@@ -25,6 +25,7 @@ export class ReplyformComponent implements OnInit {
       },
       replyTo: this.replyTo
     });
-  }
 
+    this.post = null;
+  }
 }

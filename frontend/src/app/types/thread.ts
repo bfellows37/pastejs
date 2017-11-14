@@ -4,5 +4,7 @@ export class Thread {
   path: string;
   createdAt: Date;
   isRoot: Boolean;
+  parent?: String;
   replyTo?: String;
+  indent?: Number;
 }

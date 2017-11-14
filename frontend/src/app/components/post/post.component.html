@@ -9,8 +9,7 @@
         <div class="col-xs-12 col-sm-6 text-right">
           {{reply.createdAt | date: 'medium'}}
         </div>
-        <div class="col-xs-12">
-          {{reply.content}}
+        <div class="col-xs-12" [innerHtml]="transformTags(reply.content)">
         </div>
         <div class="col-xs-12 text-center">
           <button *ngIf="isSelected" class="toggle-reply-form btn btn-primary" (click)="toggleIsReplying()">
@@ -31,7 +30,7 @@
       <div class="user-float">
         naem
       </div>
-      {{reply.content}}
+      <div [innerHtml]="transformTags(reply.content)"></div>
     </div>
   </div>
 </div>

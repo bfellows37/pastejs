@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Thread } from '../../types/thread';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { DomSanitizer, SafeStyle, SafeHtml } from '@angular/platform-browser';
 import { ClientStateService } from '../../services/client-state.service';
 import { UiState } from "../../types/ui-state";
 
@@ -21,13 +21,29 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.followUiState();
+  }
+
+  private followUiState() {
     this.clientStateService.uiState$
-      .subscribe((uiState) =>{
+      .subscribe((uiState) => {
         this.isSelected = (uiState.selectedPost === this.reply._id);
-        if(this.isReplying && !this.isSelected) {
+        if (this.isReplying && !this.isSelected) {
           this.isReplying = false;
         }
       });
+  }
+
+  transformTags(content: string): SafeHtml {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+    content = content.replace(urlRegex, (url) => {
+      return `<a target="_blank" href='${url}'>${url}</a>`;
+    });
+
+    content = content.replace('\n','<br>');
+
+    return this.domSanitizer.bypassSecurityTrustHtml(content);
   }
 
   dynamicIndent(indent): SafeStyle {

@@ -26,7 +26,7 @@ export class ThreadService {
     this.http.post('http://localhost:3000/api/posts',postRequest)
       .subscribe((response: Thread) => {
         console.log(response);
-        this.clientStateService.setSelectedPost(response.replyTo);
+        this.clientStateService.updateThreadWithPost(response);
       });
   }
 }

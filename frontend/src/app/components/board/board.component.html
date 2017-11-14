@@ -1,5 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
+    <app-replyform [replyTo]="null"></app-replyform>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
     <app-thread *ngFor="let thread of threads" [rootPost]="thread"></app-thread>
   </div>
 </div>
