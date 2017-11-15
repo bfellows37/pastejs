@@ -41,7 +41,7 @@ export class PostComponent implements OnInit {
       return `<a target="_blank" href='${url}'>${url}</a>`;
     });
 
-    content = content.replace('\n','<br>');
+    content = content.replace(/(?:\r\n|\r|\n)/g, '<br />');
 
     return this.domSanitizer.bypassSecurityTrustHtml(content);
   }
