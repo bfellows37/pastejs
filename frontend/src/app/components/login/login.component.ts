@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionService} from '../../services/session.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: LoginForm;
 
-  constructor(private sessionService: SessionService) { }
+  constructor(
+    private sessionService: SessionService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.loginForm = {
@@ -20,7 +24,12 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(): void {
-    this.sessionService.login(this.loginForm);
+    this.sessionService.login(this.loginForm)
+      .subscribe((response: any) => {
+        this.router.navigate(['/board']);
+      }, (response: any) => {
+        alert(response.error);
+      });
   }
 }
 

@@ -9,7 +9,7 @@ const sessionSchema = mongoose.Schema({
     type: String,
     ref: 'User'
   },
-  loggedIn: Boolean
+  isLoggedIn: Boolean
 },{
   timestamps: true
 });
