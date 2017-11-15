@@ -19,6 +19,11 @@
 
 .root {
   max-height: none;
+  border:1px solid #f0f0f0;
+}
+
+.root.selected {
+  border-color:#000;
 }
 
 .user-float {
@@ -31,4 +36,8 @@ button.toggle-reply-form {
   z-index:1000;
   box-shadow: 0 0 5px 5px #fff;
   background-color:darkgreen;
+}
+
+.post-header {
+  background-color:#f0f0f0;
 }

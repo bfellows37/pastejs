@@ -3,11 +3,15 @@
   <div *ngIf="isSelected || reply.isRoot" ngClass="{{(isSelected ?'selected':'unselected')}} {{reply.isRoot ? 'root' : ''}}" class="col-xs-12">
     <div class="row">
       <div [style.padding-left]="dynamicIndent(reply.indent)">
-        <div class="col-xs-12 col-sm-6">
-          naem
-        </div>
-        <div class="col-xs-12 col-sm-6 text-right">
-          {{reply.createdAt | date: 'medium'}}
+        <div class="col-xs-12">
+          <div class="row post-header">
+            <div class="col-xs-12 col-sm-6">
+              naem
+            </div>
+            <div class="col-xs-12 col-sm-6 text-right">
+              {{reply.createdAt | date: 'medium'}}
+            </div>
+          </div>
         </div>
         <div class="col-xs-12" [innerHtml]="transformTags(reply.content)">
         </div>

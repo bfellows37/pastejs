@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 const userSchema = mongoose.Schema({
-  _id: String,
-  name: String,
+  username: String,
   password: String
 },{
   timestamps: true

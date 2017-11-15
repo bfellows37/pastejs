@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { ClientStateService } from "./services/client-state.service";
 import { ThreadService } from './services/thread.service';
+import {SessionService} from "./services/session.service";
 
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +20,11 @@ import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
-  providers: [ClientStateService,ThreadService],
+  providers: [
+    ClientStateService,
+    ThreadService,
+    SessionService
+  ],
   declarations: [
     AppComponent,
     BoardComponent,

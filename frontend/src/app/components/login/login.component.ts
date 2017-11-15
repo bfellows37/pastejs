@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SessionService} from '../../services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -7,24 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: LoginForm = new LoginForm({username: null,password:null});
+  loginForm: LoginForm;
 
-  constructor() { }
+  constructor(private sessionService: SessionService) { }
 
   ngOnInit() {
+    this.loginForm = {
+      username: null,
+      password: null
+    };
   }
 
   submitLogin(): void {
-    console.log(this.loginForm);
+    this.sessionService.login(this.loginForm);
   }
 }
 
 class LoginForm {
   username: String;
   password: String;
-
-  constructor(form) {
-    this.username = form.username || '';
-    this.password = form.password || '';
-  }
 }

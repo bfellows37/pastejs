@@ -21,7 +21,7 @@ const apiRouter = require('./router');
 app.use(apiRouter);
 app.use((error,req,res,next)=>{
   console.log(error);
-  res.status(500).send(error);
+  res.status(500).send(error.message);
 
 });
 app.listen(LISTEN_PORT,()=>{
