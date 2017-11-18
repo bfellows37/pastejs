@@ -1,5 +1,3 @@
-'use strict';
-
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
@@ -10,8 +8,7 @@ const sessionSchema = mongoose.Schema({
   _user: {
     type: String,
     ref: 'User'
-  },
-  isLoggedIn: Boolean
+  }
 },{
   timestamps: true,
   toObject: { transform: mongoMask }

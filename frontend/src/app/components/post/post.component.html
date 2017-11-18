@@ -1,5 +1,4 @@
-<div (click)="selectPost(reply._id)" class="clickable row">
-  <!--<div *ngIf="isSelected || reply.isRoot" [style.margin-left]="dynamicIndent(reply.indent)" ngClass="{{(isSelected ?'selected':'unselected')}} {{reply.isRoot ? 'root' : ''}}" class="col-xs-12">-->
+<div (click)="selectPost()" class="clickable row">
   <div *ngIf="isSelected || reply.isRoot" ngClass="{{(isSelected ?'selected':'unselected')}} {{reply.isRoot ? 'root' : ''}}" class="col-xs-12">
     <div class="row">
       <div [style.padding-left]="dynamicIndent(reply.indent)">
@@ -28,7 +27,6 @@
     </div>
   </div>
 
-  <!--<div *ngIf="!isSelected && !reply.isRoot" [style.padding-left]="dynamicIndent(reply.indent)" class="unselected col-xs-12">-->
   <div *ngIf="!isSelected && !reply.isRoot" class="unselected col-xs-12">
     <div [style.padding-left]="dynamicIndent(reply.indent)">
       <div class="user-float">

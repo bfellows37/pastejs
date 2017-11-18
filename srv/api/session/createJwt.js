@@ -1,5 +1,8 @@
 const User = require('../../models/User');
 const AuthenticationError = require('../../errors').AuthenticationError;
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10;
 
 const authenticate = async (req,res,next) => {
 
@@ -12,9 +15,17 @@ const authenticate = async (req,res,next) => {
   }
 
   if(!foundUser) {
+    let hash;
+    try{
+      hash = await bcrypt.hash(req.body.password, saltRounds);
+    } catch(errorCreatingHash) {
+      next(errorCreatingHash);
+      return;
+    }
+
     let createdUser;
     try {
-      createdUser = User.create({username: req.body.username, password: req.body.password});
+      createdUser = await User.create({username: req.body.username, password: hash});
     } catch(errorCreatingUser) {
       next(errorCreatingUser);
       return;
@@ -23,7 +34,7 @@ const authenticate = async (req,res,next) => {
     req.createdUser = createdUser;
     next();
   } else /* found a user with that username, check credentials */ {
-    if(!(foundUser.password === req.body.password)) {
+    if(!bcrypt.compare(req.body.password, foundUser.password)) {
       next(new AuthenticationError('login failed'));
     } else {
       req.userAuthenticated = true;

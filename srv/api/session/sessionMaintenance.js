@@ -7,8 +7,6 @@ module.exports = exports = async (req, res, next) => {
   const token = req.headers['x-access-token'];
   const secret = process.env.PASTE_JWT_SECRET;
 
-  console.log('token', token);
-
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret);

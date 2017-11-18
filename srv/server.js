@@ -10,6 +10,7 @@ const cors = require('cors');
 
 const PASTE_MONGO_URL = process.env.PASTE_MONGO_URL;
 const LISTEN_PORT = process.env.PASTE_PORT;
+const ENV = process.env.PASTE_ENV;
 
 mongoose.connect(PASTE_MONGO_URL,{useMongoClient:true});
 
@@ -22,8 +23,8 @@ app.use(apiRouter);
 app.use((error,req,res,next)=>{
   console.log(error);
   res.status(500).send(error.message);
-
 });
+
 app.listen(LISTEN_PORT,()=>{
   console.log(`listening on ${LISTEN_PORT}`)
 });
