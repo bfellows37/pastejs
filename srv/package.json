@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "export PASTE_ENV=dev && node_modules/.bin/nodemon server.js"
+    "dev": "export PASTE_ENV=dev && node_modules/.bin/nodemon --inspect server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "cors": "^2.8.4",
     "dotenv-safe": "^4.0.4",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.0",
     "superagent": "^3.8.0",
     "time-uuid": "^1.0.0"

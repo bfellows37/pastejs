@@ -10,7 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { BoardComponent } from './components/board/board.component';
 
 import { ThreadComponent } from './components/thread/thread.component';
@@ -18,12 +18,14 @@ import { PostComponent } from './components/post/post.component';
 import { ReplyformComponent } from './components/replyform/replyform.component';
 import { LoginComponent } from './components/login/login.component';
 
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   providers: [
     ClientStateService,
     ThreadService,
-    SessionService
+    SessionService,
+    CookieService
   ],
   declarations: [
     AppComponent,

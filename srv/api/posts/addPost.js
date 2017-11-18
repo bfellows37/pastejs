@@ -1,13 +1,13 @@
 'use strict';
 
 const Post = require('../../models/Post');
-// const generateId = require('time-uuid');
+const generateId = require('../../models/helpers/generateId');
 
 let iterator = 100;
 
 const addPost = async (req,res,next) => {
 
-  const postId = Post.generateId();
+  const postId = generateId();
   let parentPost;
 
   if(!req.body.replyTo) {

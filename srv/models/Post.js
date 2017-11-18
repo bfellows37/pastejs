@@ -3,6 +3,8 @@
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
+const mongoMask = require('./helpers/mongoMask');
+
 const postSchema = mongoose.Schema({
   _id: {
     type: String
@@ -35,13 +37,9 @@ const postSchema = mongoose.Schema({
     type: Boolean
   }
 },{
-  timestamps: true
+  timestamps: true,
+  toObject: {transform: mongoMask}
 });
-
-postSchema.statics.generateId = () => {
-  let date = new Date();
-  return date.getTime().toString(16);
-};
 
 const Post = mongoose.model('Post', postSchema);
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Thread } from '../../types/thread';
 import { ThreadService } from '../../services/thread.service';
 import { ClientStateService } from "../../services/client-state.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-board',
@@ -14,7 +15,8 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private _threadService: ThreadService,
-    private _clientStateService: ClientStateService
+    private _clientStateService: ClientStateService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,8 @@ export class BoardComponent implements OnInit {
     this._threadService.getThreads()
       .subscribe(threads => {
         this.threads = threads;
+      },() => {
+        this._router.navigate(['/login']);
       });
   }
 

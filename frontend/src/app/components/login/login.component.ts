@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SessionService} from '../../services/session.service';
+import {SessionService, LoginRequest, LoginSuccessResponse} from '../../services/session.service';
 import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,18 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: LoginForm;
+  loginForm: LoginRequest;
 
   constructor(
     private sessionService: SessionService,
+    private cookieService: CookieService,
     private router: Router
   ) { }
 
   ngOnInit() {
+    if(this.cookieService.get('token')) {
+      this.router.navigate(['/board']);
+    }
     this.loginForm = {
       username: null,
       password: null
@@ -24,16 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(): void {
-    this.sessionService.login(this.loginForm)
-      .subscribe((response: any) => {
-        this.router.navigate(['/board']);
-      }, (response: any) => {
-        alert(response.error);
-      });
+    this.sessionService.login(this.loginForm);
   }
-}
-
-class LoginForm {
-  username: String;
-  password: String;
 }

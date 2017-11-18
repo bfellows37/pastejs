@@ -3,6 +3,8 @@
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
+const mongoMask = require('./helpers/mongoMask');
+
 const sessionSchema = mongoose.Schema({
   _id: String,
   _user: {
@@ -11,7 +13,8 @@ const sessionSchema = mongoose.Schema({
   },
   isLoggedIn: Boolean
 },{
-  timestamps: true
+  timestamps: true,
+  toObject: { transform: mongoMask }
 });
 
 const Session = mongoose.model('Session', sessionSchema);
