@@ -14,7 +14,6 @@ export class ReplyformComponent implements OnInit {
   constructor(private threadService: ThreadService,) { }
 
   ngOnInit() {
-    this.post = this.replyTo;
   }
 
   submitReply(): void {
