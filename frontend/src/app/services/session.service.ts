@@ -12,7 +12,7 @@ export class SessionService {
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
 
   login(loginRequest: LoginRequest): void {
-    this.http.post('http://localhost:3000/api/session/createToken', loginRequest)
+    this.http.post('/api/session/createToken', loginRequest)
       .subscribe((response: LoginSuccessResponse) => {
         this._token = response.token;
         this.cookieService.set('token', response.token);
@@ -28,7 +28,7 @@ export class SessionService {
 
   verifyToken(): Observable<VerifyTokenResponse> {
     const tokenRequestBody: VerifyTokenRequest = {token: this.cookieService.get('token')};
-    return this.http.post('http://localhost:3000/api/session/me',tokenRequestBody);
+    return this.http.post('/api/session/me',tokenRequestBody);
   }
 }
 

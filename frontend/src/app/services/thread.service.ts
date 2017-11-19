@@ -21,21 +21,21 @@ export class ThreadService {
   getThreads(): Observable<Thread[]> {
     let token = this.sessionService.getToken();
     let headers =  new HttpHeaders().set('x-access-token', this.cookieService.get('token'));
-    return this.http.get('http://localhost:3000/api/posts',{headers:headers});
+    return this.http.get('/api/posts',{headers:headers});
   }
 
   getReplies(threadId: String): Observable<Thread[]> {
     let token = this.sessionService.getToken();
     let headers =  new HttpHeaders().set('x-access-token', this.cookieService.get('token'));
     return this.http.get(
-      `http://localhost:3000/api/posts/replies/${threadId}`,
+      `/api/posts/replies/${threadId}`,
       {headers: headers});
   }
 
   postReply(postRequest: PostRequest): void {
     let token = this.sessionService.getToken();
     let headers =  new HttpHeaders().set('x-access-token', this.cookieService.get('token'));
-    this.http.post('http://localhost:3000/api/posts',postRequest, {headers:headers})
+    this.http.post('/api/posts',postRequest, {headers:headers})
       .subscribe((response: Thread) => {
         console.log(response);
         this.clientStateService.updateThreadWithPost(response);

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  srv:
+    build:
+      context: .
+      dockerfile: Srv.Dockerfile
+    env_file:
+      - ./deploy/srv.env
+    links:
+      - mongo
+
+  app:
+    build:
+      context: .
+      dockerfile: App.Dockerfile
+    ports:
+      - 4200:4200
+    env_file:
+      - ./deploy/app.env
+    links:
+      - srv
+
+  mongo:
+    image: mongo:latest
