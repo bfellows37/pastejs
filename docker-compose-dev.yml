@@ -24,3 +24,8 @@ services:
 
   mongo:
     image: mongo:latest
+    volumes:
+      - dbdata:/data
+
+volumes:
+  dbdata:
