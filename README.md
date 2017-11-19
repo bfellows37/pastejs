@@ -11,5 +11,7 @@ Have docker and docker-compose installed.
 
 The docker-compose.yml file is set up to download built images from dockerhub.
 
-1. Clone the repo, and navigate into the directory.
-2. run docker-compose up
+1. Clone the repo, and navigate into the directory
+2. run `docker-compose up`
+
+You should be able to access the app at http://localhost:80
