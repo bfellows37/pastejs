@@ -13,7 +13,7 @@ router.post('/createToken', [createTokenHandler], (req,res) => {
 });
 
 router.get('/me', [authGuard, (req,res) => {
-  res.status(200).send(req.session);
+  res.status(200).send(req.session._user);
 }]);
 
 module.exports = exports = router;

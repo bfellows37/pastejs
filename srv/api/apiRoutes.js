@@ -7,6 +7,7 @@ const postsRoutes= require('./posts/postsRoutes');
 const sessionRoutes = require('./session/sessionRoutes');
 
 router.use(sessionMaintenance);
+
 router.use('/session', sessionRoutes);
 router.use('/posts',[authGuard,postsRoutes]);
 

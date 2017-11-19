@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
+import {ThreadUser} from "../types/thread";
 
 @Injectable()
 export class SessionService {
 
   _token: string;
+  me: ThreadUser;
 
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
 
@@ -26,9 +28,12 @@ export class SessionService {
     return this._token;
   }
 
-  verifyToken(): Observable<VerifyTokenResponse> {
-    const tokenRequestBody: VerifyTokenRequest = {token: this.cookieService.get('token')};
-    return this.http.post('/api/session/me',tokenRequestBody);
+  getUserInfo(): void {
+    let headers =  new HttpHeaders().set('x-access-token', this.cookieService.get('token'));
+    this.http.get('/api/session/me',{headers:headers})
+      .subscribe((response: ThreadUser) => {
+        this.me = response;
+      });
   }
 }
 

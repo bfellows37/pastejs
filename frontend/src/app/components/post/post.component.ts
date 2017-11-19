@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Thread } from '../../types/thread';
+import {Thread, ThreadUser} from '../../types/thread';
 import { DomSanitizer, SafeStyle, SafeHtml } from '@angular/platform-browser';
 import { ClientStateService } from '../../services/client-state.service';
 import { UiState } from "../../types/ui-state";
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-post',
@@ -14,14 +15,17 @@ export class PostComponent implements OnInit {
   @Input() reply: Thread;
   isSelected: Boolean;
   isReplying: Boolean;
+  me: ThreadUser;
 
   constructor(
     private domSanitizer: DomSanitizer,
-    private clientStateService: ClientStateService
+    private clientStateService: ClientStateService,
+    private sessionService: SessionService,
   ) { }
 
   ngOnInit() {
     this.followUiState();
+    this.me = this.sessionService.me;
   }
 
   private followUiState() {

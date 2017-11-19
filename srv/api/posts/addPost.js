@@ -3,17 +3,17 @@
 const Post = require('../../models/Post');
 const generateId = require('../../models/helpers/generateId');
 
-let iterator = 100;
-
 const addPost = async (req,res,next) => {
 
   const postId = generateId();
   let parentPost;
+  console.log('session: ',req.session);
 
   if(!req.body.replyTo) {
     try {
       req.post = await Post.create({
         _id: postId,
+        _user: req.session._user.id,
         replyTo: postId,
         content: req.body.post.content,
         parent: null,
@@ -35,6 +35,7 @@ const addPost = async (req,res,next) => {
     try {
       req.post = await Post.create({
         _id: postId,
+        _user: req.session._user.id,
         replyTo: parentPost.replyTo,
         content: req.body.post.content,
         parent: parentPost._id,

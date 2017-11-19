@@ -1,5 +1,6 @@
 export class Thread {
   _id: string;
+  _user: ThreadUser;
   content: string;
   path: string;
   createdAt: Date;
@@ -7,4 +8,8 @@ export class Thread {
   parent?: String;
   replyTo?: String;
   indent?: Number;
+}
+
+export class ThreadUser {
+  username: string;
 }

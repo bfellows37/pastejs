@@ -16,7 +16,7 @@ export class ThreadComponent implements OnInit {
 
   constructor(
     private threadService: ThreadService,
-    private clientStateService: ClientStateService
+    private clientStateService: ClientStateService,
   ) { }
 
   ngOnInit() {

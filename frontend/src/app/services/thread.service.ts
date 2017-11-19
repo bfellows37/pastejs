@@ -25,7 +25,6 @@ export class ThreadService {
   }
 
   getReplies(threadId: String): Observable<Thread[]> {
-    let token = this.sessionService.getToken();
     let headers =  new HttpHeaders().set('x-access-token', this.cookieService.get('token'));
     return this.http.get(
       `/api/posts/replies/${threadId}`,

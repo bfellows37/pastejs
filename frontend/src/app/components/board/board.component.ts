@@ -4,6 +4,7 @@ import { ThreadService } from '../../services/thread.service';
 import { ClientStateService } from "../../services/client-state.service";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-board',
@@ -18,12 +19,14 @@ export class BoardComponent implements OnInit {
     private _threadService: ThreadService,
     private _clientStateService: ClientStateService,
     private _router: Router,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private _sessionService: SessionService
   ) { }
 
   ngOnInit() {
     this._getThreads();
     this._followCreatedPost();
+    this._sessionService.getUserInfo();
   }
 
   private _followCreatedPost(): void {
