@@ -6,7 +6,10 @@ mongoose.Promise = Promise;
 const mongoMask = require('./helpers/mongoMask');
 
 const userSchema = mongoose.Schema({
-  username: String,
+  username: {
+    type: String,
+    required: true
+  },
   password: String
 },{
   timestamps: true,
