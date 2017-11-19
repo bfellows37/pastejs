@@ -7,10 +7,6 @@ docker-compose down
 docker rm $(docker ps -aq)
 docker rmi $(docker images -q) --force
 
-# install frontend assets........ TODO maybe do this in the container?
-cd frontend/src/assets
-../../node_modules/.bin/bower install
-
 # put the site up
 cd ../../..
 docker-compose up
