@@ -6,6 +6,7 @@ const getReplies = async (req,res,next) => {
 
   try {
     req.replies = await Post.find({replyTo : req.params.replyTo, isRoot : false})
+      .populate('_user')
       .collation({locale: 'en'})
       .sort({path:'asc'});
 
