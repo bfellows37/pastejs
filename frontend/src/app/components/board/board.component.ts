@@ -3,6 +3,7 @@ import { Thread } from '../../types/thread';
 import { ThreadService } from '../../services/thread.service';
 import { ClientStateService } from "../../services/client-state.service";
 import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-board',
@@ -16,7 +17,8 @@ export class BoardComponent implements OnInit {
   constructor(
     private _threadService: ThreadService,
     private _clientStateService: ClientStateService,
-    private _router: Router
+    private _router: Router,
+    private _cookieService: CookieService
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class BoardComponent implements OnInit {
       .subscribe(threads => {
         this.threads = threads;
       },() => {
+        this._cookieService.delete('paste');
         this._router.navigate(['/login']);
       });
   }
