@@ -21,7 +21,5 @@ services:
   mongo:
     image: mongo:latest
     volumes:
-      - dbdata:/data
-
-volumes:
-  dbdata:
+      - ./deploy/data/db:/data/db
+      - ./deploy/data/configdb:/data/configdb
