@@ -8,5 +8,4 @@ docker rm $(docker ps -aq)
 docker rmi $(docker images -q) --force
 
 # put the site up
-cd ../../..
 docker-compose up
