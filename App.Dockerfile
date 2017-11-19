@@ -6,6 +6,8 @@ WORKDIR /paste-app
 
 RUN npm install
 
+RUN rm .env
+
 RUN ./node_modules/.bin/ng build --prod
 
 EXPOSE 4200
