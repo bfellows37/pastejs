@@ -43,7 +43,7 @@ export class BoardComponent implements OnInit {
       .subscribe(threads => {
         this.threads = threads;
       },() => {
-        this._cookieService.delete('paste');
+        this._cookieService.delete('token');
         this._router.navigate(['/login']);
       });
   }
