@@ -13,7 +13,7 @@ import {SessionService} from "../../services/session.service";
 })
 export class BoardComponent implements OnInit {
 
-  threads: Thread[];
+  threads: Thread[] = [];
 
   constructor(
     private _threadService: ThreadService,
