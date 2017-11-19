@@ -3,16 +3,20 @@ version: '3'
 services:
 
   srv:
-    image: bfellows37/pasteapi:latest
+    build:
+      context: .
+      dockerfile: Srv.Dockerfile
     env_file:
       - ./deploy/srv.env
     links:
       - mongo
 
   app:
-    image: bfellows37/paste:latest
+    build:
+      context: .
+      dockerfile: App.Dockerfile
     ports:
-      - 80:4200
+      - 4200:4200
     env_file:
       - ./deploy/app.env
     links:

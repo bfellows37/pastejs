@@ -3,9 +3,7 @@
 # put the site down
 docker-compose down
 
-# remove old images and containers
-docker rm $(docker ps -aq)
-docker rmi $(docker images -q) --force
+./script/delete-images-and-containers.sh
 
 # put the site up
 docker-compose up -d
