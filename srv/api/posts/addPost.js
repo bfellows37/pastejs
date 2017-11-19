@@ -7,7 +7,6 @@ const addPost = async (req,res,next) => {
 
   const postId = generateId();
   let parentPost;
-  console.log('session: ',req.session);
 
   if(!req.body.replyTo) {
     try {
