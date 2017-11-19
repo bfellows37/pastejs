@@ -12,7 +12,7 @@ RUN rm .env
 
 WORKDIR /paste-app/src/assets
 
-RUN /paste-app/node_modules/.bin/bower install
+RUN /paste-app/node_modules/.bin/bower install --allow-root
 
 WORKDIR /paste-app
 
