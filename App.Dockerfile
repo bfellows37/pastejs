@@ -6,6 +6,8 @@ WORKDIR /paste-app
 
 RUN npm install
 
+RUN touch .env
+
 RUN rm .env
 
 RUN ./node_modules/.bin/ng build --prod
