@@ -3,5 +3,3 @@ srv/node_modules
 srv/.env
 frontend/node_modules
 frontend/src/assets/bower_components
-pastedataconfigdb
-pastedatadb
