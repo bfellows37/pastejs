@@ -14,3 +14,7 @@ Uses Mongo as the data store and NodeJS to run the backend API.
 pastejs-docker-compose is an easy way to get it running.
 
 https://github.com/bfellows37/pastejs-docker-compose
+
+## next up
+
+working on some continuous deployment
