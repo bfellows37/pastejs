@@ -9,7 +9,7 @@ const getPosts = async (req,res,next) => {
       .populate('_user')
       .collation({locale: 'en'})
       .sort({updatedAt: 'desc'})
-      .limit(100);
+      .limit(40);
 
     next();
   } catch(error) {
