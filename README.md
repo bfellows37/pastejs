@@ -17,4 +17,4 @@ https://github.com/bfellows37/pastejs-docker-compose
 
 ## next up
 
-working on some continuous deployment
+Maybe automated deployment works
