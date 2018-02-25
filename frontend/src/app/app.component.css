@@ -5,8 +5,9 @@
 }
 
 .header a {
-  color: pink;
+  color: white;
   text-decoration:none;
+  font-weight:bold;
 }
 
 .menu-column {
