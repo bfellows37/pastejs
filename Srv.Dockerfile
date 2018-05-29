@@ -4,7 +4,7 @@ ADD srv /paste-srv
 
 WORKDIR /paste-srv
 
-RUN npm install
+RUN npm install --silent
 
 EXPOSE 3000
 

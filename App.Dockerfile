@@ -4,7 +4,7 @@ ADD frontend /paste-app
 
 WORKDIR /paste-app
 
-RUN npm install
+RUN npm install --silent
 
 RUN touch .env
 
@@ -16,7 +16,7 @@ RUN /paste-app/node_modules/.bin/bower install --allow-root
 
 WORKDIR /paste-app
 
-RUN ./node_modules/.bin/ng build --prod
+RUN ./node_modules/.bin/ng build --prod --no-progress
 
 EXPOSE 4200
 
