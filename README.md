@@ -18,5 +18,3 @@ https://github.com/bfellows37/pastejs-docker-compose
 ## next up
 
 Maybe automated deployment works
-
-hi mike
