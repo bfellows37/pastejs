@@ -4,11 +4,7 @@ ADD srv /paste-srv
 
 WORKDIR /paste-srv
 
-RUN npm install
-
-RUN touch .env
-
-RUN rm .env
+RUN npm install --silent
 
 EXPOSE 3000
 

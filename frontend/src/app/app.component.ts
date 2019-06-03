@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'PASTE  ';
 
-  reload() {
+  reload($event) {
     location.reload();
+    $event.preventDefault();
   }
 }

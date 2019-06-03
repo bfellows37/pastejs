@@ -27,7 +27,11 @@
 }
 
 .user-float {
-  float:right;
+  position:absolute;
+  top:0;
+  right:0;
+  background-color:#fff;
+  padding-left:1em;
 }
 
 button.toggle-reply-form {
