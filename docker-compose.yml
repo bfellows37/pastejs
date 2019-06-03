@@ -19,7 +19,7 @@ services:
       - srv
 
   mongo:
-    image: mongo:latest
+    image: mongo:3.6
     volumes:
       - dbdata:/data/db
       - dbconfig:/data/configdb
